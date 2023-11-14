@@ -1,4 +1,5 @@
 import { useLoaderData } from "react-router-dom";
+import { Cliente } from "../components/Cliente";
 
 export function loader() {
   const clientes = [
@@ -48,6 +49,41 @@ export const Index = () => {
     <>
       <h1 className="font-black text-4xl text-blue-900">Clientes</h1>
       <p className="mt-3">Administra tus Clientes</p>
+      {clientes.length ? (
+        <div className="overflow-x-auto mt-5">
+          <table className="table">
+            <thead>
+              <tr>
+                <th>Cliente</th>
+                <th>Contacto</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              {clientes.map((cliente) => (
+                <Cliente key={cliente.id} cliente={cliente} />
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <div className="alert alert-info">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            className="stroke-current shrink-0 w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            ></path>
+          </svg>
+          <span>No hay clientes aún</span>
+        </div>
+      )}
     </>
   );
 };
