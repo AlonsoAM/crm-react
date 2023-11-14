@@ -53,7 +53,7 @@ export const Index = () => {
         <div className="overflow-x-auto mt-5">
           <table className="table">
             <thead>
-              <tr>
+              <tr className="bg-blue-800 text-white uppercase text-center">
                 <th>Cliente</th>
                 <th>Contacto</th>
                 <th>Acciones</th>
